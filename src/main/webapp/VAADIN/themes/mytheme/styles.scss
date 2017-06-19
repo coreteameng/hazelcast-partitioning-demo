@@ -1,0 +1,169 @@
+@import "mytheme.scss";
+@import "addons.scss";
+
+// This file prefixes all rules with the theme name to avoid causing conflicts with other themes.
+// The actual styles should be defined in mytheme.scss
+
+.mytheme {
+  @include addons;
+  @include mytheme;
+
+}
+.background-black {
+	background-color: black;
+}
+
+.background-red {
+	background-color: red;
+}
+
+.background-blue {
+	background-color: blue;
+}
+
+.member-internal-spacing {
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.partition-spacing {
+	padding-top: 10px;
+}
+
+.partition-vertical-layout-spacing {
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+}
+
+.member-padding {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.partition-margin {
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.background-orange300 {
+	background-color: #FFB74D;
+}
+
+.background-blue50 {
+	background-color: #E3F2FD;
+}
+
+.background-amber50 {
+	background-color: #FFF8E1;
+}
+
+.background-dark-blue {
+	background-color: #0d2a35;
+}
+
+.background-orange {
+	background-color: #ff5f00;
+}
+
+.background-redA200 {
+	background-color: #FF5252;
+}
+
+.background-redA100 {
+	background-color: #FF8A80;
+}
+
+.background-purpleA200 {
+	background-color: #E040FB;
+}
+
+.background-purpleA100 {
+	background-color: #EA80FC;
+}
+
+.background-indigoA200 {
+	background-color: #536DFE;
+}
+
+.background-indigoA100 {
+	background-color: #8C9EFF;
+}
+
+.background-greenA200 {
+	background-color: #69F0AE;
+}
+
+.background-greenA100 {
+	background-color: #B9F6CA;
+}
+
+.background-limeA200 {
+	background-color: #EEFF41;
+}
+
+.background-limeA100 {
+	background-color: #F4FF81;
+}
+
+.background-brown200 {
+	background-color: #D7CCC8;
+}
+
+.background-brown100 {
+	background-color: #BCAAA4;
+}
+
+.partitions-primary-border {
+    border: 1px dashed black;
+    border-radius: 5px;
+}
+
+.partitions-backup-border {
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.member-border {
+    border: 1px solid white;
+}
+
+.text-alignment-center {
+    text-align: center;
+}
+
+.color-white{
+    color: white;
+}
+
+.v-icon{
+    color: white;
+    font-size: 20px;
+}
+
+.button-icon .v-icon{
+    color: black;
+}
+
+.font-20px{
+    font-size: 20px;
+}
+
+.font-bold{
+    font-weight: bold;
+}
+
+.mytheme .v-margin-top {
+    padding-top: 10px;
+}
+
+.button-caption-margin .v-button-wrap {
+    margin-left: -4px;
+}
+
+.title-padding-bottom {
+    padding-bottom: 40px;
+}
