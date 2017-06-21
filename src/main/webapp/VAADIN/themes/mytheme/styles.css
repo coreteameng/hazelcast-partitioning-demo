@@ -12593,3 +12593,7 @@ div.v-layout.v-horizontal.v-widget {
 .title-padding-bottom {
 	padding-bottom: 40px;
 }
+
+.background-transparent {
+	background-color: rgba(0, 0, 0, 0.01);
+}

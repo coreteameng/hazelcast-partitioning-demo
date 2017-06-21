@@ -57,6 +57,8 @@ public class MyUI extends UI {
     private Label hashcodeLabel;
     private ProgressBar bar;
     private Label arrowLabel;
+    private final int blinkCount = 4;
+    private final int blinkWait = 300;
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -202,8 +204,10 @@ public class MyUI extends UI {
             if (!member.getMemberAddress().equals(primaryMemberAddress)
                     && member.containsInPrimaries(partitionId)) {
                 Partition primary = allPrimaryPartitionMap.get(partitionId);
+                blink(primary);
                 member.removePrimaryPartition(primary);
                 memberMap.get(primaryMemberAddress).addPrimaryPartition(primary);
+                blink(primary);
                 return;
             }
         }
@@ -214,8 +218,10 @@ public class MyUI extends UI {
             if (!member.getMemberAddress().equals(backupMemberAddress)
                     && member.containsInBackups(partitionId)) {
                 Partition backup = allBackupPartitionMap.get(partitionId);
+                blink(backup);
                 member.removeBackupPartition(backup);
                 memberMap.get(backupMemberAddress).addBackupPartition(backup);
+                blink(backup);
                 return;
             }
         }
@@ -230,6 +236,7 @@ public class MyUI extends UI {
         Partition backupPartition = allBackupPartitionMap.get(partitionId);
         Partition primaryPartition = allPrimaryPartitionMap.get(partitionId);
         memberMap.get(primaryPartition.getOwner()).addBackupPartition(backupPartition);
+        blink(backupPartition);
     }
 
     private void checkAllPrimariesAndPutIfNotExists(int partitionId) {
@@ -241,6 +248,26 @@ public class MyUI extends UI {
         Partition primaryPartition = allPrimaryPartitionMap.get(partitionId);
         Partition backupPartition = allBackupPartitionMap.get(partitionId);
         memberMap.get(backupPartition.getOwner()).addPrimaryPartition(primaryPartition);
+        blink(primaryPartition);
+    }
+
+    public void blink(Partition partition) {
+        for (int i = 0; i < blinkCount; i++) {
+            partition.makeUnvisible();
+            push();
+            waitInMs(blinkWait);
+            partition.makeVisible();
+            push();
+            waitInMs(blinkWait);
+        }
+    }
+
+    private void waitInMs(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean initHzService() {

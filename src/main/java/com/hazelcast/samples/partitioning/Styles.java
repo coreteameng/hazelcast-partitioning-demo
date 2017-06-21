@@ -8,6 +8,7 @@ public class Styles {
     public final static String BACKGROUND_RED = "background-red";
     public final static String BACKGROUND_BLUE = "background-blue";
     public final static String BACKGROUND_DARK_BLUE = "background-dark-blue";
+    public final static String BACKGROUND_TRANSPARENT = "background-transparent";
     public final static String MEMBER_BACKGROUND = "background-orange";
     public final static String MEMBER_BORDER = "member-border";
     public final static String BACKGROUND_PART0_PRIM = "background-redA200";

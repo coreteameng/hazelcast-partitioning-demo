@@ -20,6 +20,7 @@ public class Partition extends VerticalLayout {
     public static final String BACKUP_PARTITION_NAME_PREFIX = "Backup #";
     private String owner;
     private GridLayout entryLayout;
+    private final String backgroundColorStyle;
 
     public Partition(int partitionId, String name, int type) {
         this.partitionId = partitionId;
@@ -29,7 +30,8 @@ public class Partition extends VerticalLayout {
         setComponentAlignment(partitionNameLabel, Alignment.TOP_CENTER);
         setWidth(100, Unit.PIXELS);
         setHeight(130, Unit.PIXELS);
-        addStyleName(getBackgroundColorStyle(type, partitionId));
+        backgroundColorStyle = getBackgroundColorStyle(type, partitionId);
+        addStyleName(backgroundColorStyle);
         addStyleName("partition-margin");
         setMargin(false);
         setSpacing(false);
@@ -100,5 +102,17 @@ public class Partition extends VerticalLayout {
 
     public void addEntry(Entry entry) {
         entryLayout.addComponent(entry);
+    }
+
+    public void makeUnvisible() {
+        this.addStyleName(BACKGROUND_TRANSPARENT);
+        partitionNameLabel.setVisible(false);
+        entryLayout.setVisible(false);
+    }
+
+    public void makeVisible() {
+        this.removeStyleName(BACKGROUND_TRANSPARENT);
+        partitionNameLabel.setVisible(true);
+        entryLayout.setVisible(true);
     }
 }
