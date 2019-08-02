@@ -32,9 +32,9 @@ public class HazelcastService {
                                                  Map<Integer, Partition> backupPartitionMap) {
         ArrayList<Member> members = new ArrayList<>();
         String[][] partitions = getPartitionTable();
-        Set<com.hazelcast.core.Member> hzMembers = hzClient.getCluster().getMembers();
+        Set<com.hazelcast.core.Member> hzMembersChanged = hzClient.getCluster().getMembers();
         int count = 0;
-        for (com.hazelcast.core.Member hzMember : hzMembers) {
+        for (com.hazelcast.core.Member hzMember : hzMembersChanged) {
             String memberAddress = hzMember.getAddress().toString();
             Member memberUI = new Member(memberAddress);
             memberUI.setMemberName(Member.MEMBER_NAME_PREFIX + count++ + " " + memberAddress);
